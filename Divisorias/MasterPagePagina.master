@@ -1,0 +1,182 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPagePagina.master.cs" Inherits="MasterPagePagina" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Lusole</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+    <meta name="author" content="Your name">
+    <link rel="stylesheet" href="App_Themes/css/style.css">
+    <link rel="stylesheet" href="App_Themes/css/demo.css">
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <script src="js/superfish.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+
+    <!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+	    <script src="js/html5.js"></script>
+	    <link rel="stylesheet" href="css/ie.css"> 
+    <![endif]-->
+</head>
+<body id="page2">
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <form id="form1" runat="server">
+        <!--==============================header=================================-->
+        <header>
+            <div class="head-line"></div>
+            <div class="main">
+                <div class="head-box1">
+                    <div class="search-box">
+                        <div id="search-form">
+                            TEL.: 11  2939 8188<br />
+                            CEL.: 11 99746 3144<br />
+                            CEL.: 11 94798 2900
+                            <%--<input type="text" onfocus="if(this.value =='Enter Keyword') this.value=''" onblur="if(this.value=='') this.value='Enter Keyword'" value="Enter Keyword" name="name" />
+                            <a class="submit" onclick="document.getElementById('search-form').submit()"></a>--%>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <h1 class="p6"><a class="logo" href="Default.aspx">Lusole</a></h1>
+                    <div class="clear"></div>
+                </div>
+                <nav>
+                    <ul class="sf-menu">
+                        <li><a class="active" href="Default.aspx">Home</a></li>
+                        <li><a href="Empresa.aspx">Lusole</a></li>
+                        <li><a href="Servicos.aspx">Produtos</a>
+                            <ul>
+                                <li><a href="Servicos.aspx">Divisórias</a>
+                                    <ul>
+                                        <li><a href="DivisoriasVidro.aspx">Vidro</a></li>
+                                        <li><a href="DivisoriasEucatex.aspx">Eucatex</a></li>
+                                        <li><a href="DivisoriasDrywall.aspx">Drywall</a></li>
+                                        <li><a href="DivisoriasAcustica.aspx">Acústicas</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="Servicos.aspx">Forros</a>
+                                    <ul>
+                                        <li><a href="ForrosIsopor.aspx">Isopor</a></li>
+                                        <li><a href="ForrosGessoAcartonado.aspx">Gesso (Drywall)</a></li>
+                                        <li><a href="ForrosFibraMineral.aspx">Mineral</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="Servicos.aspx">DryWall</a>
+                                    <ul>
+                                        <li><a href="ForrosGessoAcartonado.aspx">Forros</a></li>
+                                        <li><a href="DivisoriasDrywall.aspx">Divisórias</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="http://www.lusolepersianas.com.br" target="_blank">Persianas</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="Clientes.aspx">Clientes</a></li>
+                        <li><a href="Contato.aspx">Fale Conosco</a>
+                            <ul>
+                                <li><a href="Contato.aspx">Contato</a></li>
+                                <li><a href="Orcamento.aspx">Orçamento</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </nav>
+
+            </div>
+        </header>
+
+
+        <!--==============================content================================-->
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        <!--==============================footer=================================-->
+        <footer>
+            <div class="main">
+                <div class="container_12">
+                    <div class="wrapper p14">
+                        <article class="grid_12">
+                            <div class="border-bot">
+                                <article class="grid_4 alpha">
+                                    <h6>Atendimento</h6>
+                                    <ul class="list2 margin-bot">
+                                        <li><a>De Segunda a Sexta-Feira das 08:30 às 17:30h</a></li>
+                                        <li><a>CNPJ: 008.511.729/0001-34</a></li>
+                                    </ul>
+                                    <h6>Contato</h6>
+                                    <ul class="list2">
+                                        <li><a>Tel: 11 2939 8188</a></li>
+                                        <li><a>Cel: 11 99746 3144</a></li>
+                                        <li><a>Nextel: 11 94798 2900</a></li>
+                                        <li><a>ID: 9*27069</a></li>
+                                        <li><a href="Contato.aspx">Email: contato@lusole.com.br</a></li>
+                                    </ul>
+                                </article>
+                                <article class="grid_2">
+                                    <h6>Produtos</h6>
+                                    <ul class="list2">
+                                        <li><a href="DivisoriasVidro.aspx">Divisórias</a></li>
+                                        <li><a href="ForrosGessoAcartonado.aspx">Forros</a></li>
+                                        <li><a href="DivisoriasDrywall.aspx">Drywall</a></li>
+                                        <li><a href="http://wwww.lusolepersianas.com.br" target="_blank">Persianas</a></li>
+                                    </ul>
+                                </article>
+                                <article class="grid_2">
+                                    <h6>Empresa</h6>
+                                    <ul class="list2">
+                                        <li><a href="Empresa.aspx">Quem Somos</a></li>
+                                        <li><a href="Clientes.aspx">Clientes</a></li>
+                                        <li><a href="Contato.aspx">Contato</a></li>
+                                        <li><a href="Orcamento.aspx">Orçamento</a></li>
+                                    </ul>
+
+                                </article>
+                                 <article class="grid_3">
+                                    <h6>Lusole no Facebook</h6>
+                                    <div class="fb-like" data-href="https://www.facebook.com/pages/Lusole-Divis%C3%B3rias/637082513003241?fref=ts" data-width="140" data-show-faces="true" data-send="true"></div>
+                                </article>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="foot-page1">
+                        <div class="fleft"><span>Lusole</span><strong>&copy; 2012 | <a href="http://www.diapoio.com.br" target="_blank">Desenvolvimento DI APOIO EMPRESARIAL</a></strong></div>
+                        <div class="fright">
+                            <!-- {%FOOTER_LINK} -->
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="foot-line"></div>
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-7078796-5']);
+            _gaq.push(['_trackPageview']);
+
+            (function () {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+    </form>
+</body>
+</html>
