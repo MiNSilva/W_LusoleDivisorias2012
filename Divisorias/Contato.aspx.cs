@@ -35,17 +35,20 @@ public partial class Contato : System.Web.UI.Page
                 message.Append("<b>Descrição:</b> " + txtMessage.Text + "<br>");
                 message.Append("========================================");
 
-                resultado = EnviaEmail.EnviarEmail("lusolem@yahoo.com.br", txtEmail.Text, "Contato Site", message.ToString());
-
-                if (String.IsNullOrEmpty(resultado))
+                if (String.IsNullOrEmpty(txtvalidaCampo.Text))
                 {
-                    LblMessage.Text = "Mensagem enviada com sucesso!";
-                    txtNome.Text = string.Empty;
-                    txtEmail.Text = string.Empty;
-                    txtTelefone.Text = string.Empty;
-                    txtAssunto.Text = string.Empty;
-                    txtMessage.Text = string.Empty;
-                    btnEnviar.Enabled = false;
+                    resultado = EnviaEmail.EnviarEmail("lusolem@yahoo.com.br", txtEmail.Text, "Contato Site", message.ToString());
+
+                    if (String.IsNullOrEmpty(resultado))
+                    {
+                        LblMessage.Text = "Mensagem enviada com sucesso!";
+                        txtNome.Text = string.Empty;
+                        txtEmail.Text = string.Empty;
+                        txtTelefone.Text = string.Empty;
+                        txtAssunto.Text = string.Empty;
+                        txtMessage.Text = string.Empty;
+                        btnEnviar.Enabled = false;
+                    }
                 }
 
             }

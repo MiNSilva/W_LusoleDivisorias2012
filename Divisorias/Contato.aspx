@@ -26,7 +26,8 @@
                     </article>
                     <article class="grid_7">
                     	<h4 class="p10">Envie-nos uma mensagem</h4>
-                        <div id="form1">                 						
+                        <div id="form1">    
+                            <asp:TextBox ID="txtvalidaCampo" runat="server" Visible="false" placeholder="Não preencher esse campo"></asp:TextBox>             						
 				                <label>
                                 <asp:Label ID="Label1" runat="server" Text="Nome:"></asp:Label>                        
                                 <asp:RequiredFieldValidator ID="valName" runat="server" 
