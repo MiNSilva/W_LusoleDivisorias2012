@@ -6,6 +6,7 @@
             <div class="container_12">
                 <div class="wrapper">
                     <article class="grid_5">
+                         <asp:TextBox ID="txtvalidaCampo" runat="server" Visible="false" placeholder="Não preencher esse campo"></asp:TextBox>
                         <h4 class="p10">Orçamento</h4>
                         <p>Preencha o formulário ao lado com os dados do seu projeto e data para que possamos 
                             montar seu orçamento o mais rápido possível.</p>
@@ -75,6 +76,22 @@
                                 <asp:RequiredFieldValidator ID="valMessage" runat="server" ControlToValidate="txtMessage" ErrorMessage="Informar Descriçao do Projeto." 
                                     ForeColor="Red"  ValidationGroup="Orcamento" Display="Dynamic"></asp:RequiredFieldValidator>
                                 <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" Height="130px" Width="370px"> </asp:TextBox><br />                                
+                            </label>
+                             <label>
+                                <asp:CheckBox ID="CheckBox1" runat="server" style="margin-left: -145px;" />
+                                <asp:Label ID="lblConsentimento" runat="server" Text="Label" style="margin-left: -140px;"></asp:Label>
+                                <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Campo obrigatorio" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator></td>
+                            </label>
+
+                            <hr />
+                            <label>
+                                Quanto é
+                                <asp:Label ID="lblIni" runat="server" Text=""></asp:Label>
+                                +
+                                <asp:Label ID="lblFim" runat="server" Text=""></asp:Label>?                               
+                                <br />
+                                <asp:TextBox ID="txtresult" runat="server" Width="370px"></asp:TextBox><br />
+                                <br />
                             </label>
                             <asp:Label ID="LblMessage" runat="server" Text="" ForeColor="Red"></asp:Label><br />
                             <asp:Button ID="btnEnviar" runat="server" Text="Enviar" CssClass="button-1" ValidationGroup="Orcamento" OnClick="btnEnviar_Click"></asp:Button>

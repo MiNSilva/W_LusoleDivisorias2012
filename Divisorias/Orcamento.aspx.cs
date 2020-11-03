@@ -11,79 +11,88 @@ public partial class Orcamento : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            Random number = new Random();
 
+            lblIni.Text = number.Next(50).ToString();
+            lblFim.Text = number.Next(50).ToString();
+
+            lblConsentimento.Text = "Estou de acordo em fornecer meu Nome, Email e Telefone para que entre em contato," +
+                "bem como estou ciente de que esses dados serão utilizados pelas áreas de Marketing e Comercial para o envio de emails.";
+        }
+    }
+
+    protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+    {
+        args.IsValid = CheckBox1.Checked;
     }
 
     protected void btnEnviar_Click(object sender, EventArgs e)
     {
+
         if (Page.IsValid)
         {
-            //Instancia o objeto que monta a mensagem já passando como parâmetro o e-mail do remetente e destinatário
-            MailMessage mail = new MailMessage(txtEmail.Text, "contato@lusole.com.br");
-
-            //Define o CC(Com Cópia) e CCO(Com cópia oculta) caso tenha sido informado
-            //mail.CC.Add("contato@apasbraganca.com.br");
-            //mail.Bcc.Add("contato@apasbraganca.com.br");
-
-            //Define o asunto da mensagem
-            mail.Subject = "Orçamento";
-
-
-            //Define o conteúdo da mensagem
-            StringBuilder message = new StringBuilder();
-
-            message.Append("<b>Orçamento Site</b>" + "<br>");
-            message.Append("========================================" + "<br>");
-            message.Append("<b>Nome:</b> " + txtNome.Text + "<br>");
-            message.Append("<b>Empresa:</b> " + txtEmpresa.Text + "<br>");
-            message.Append("<b>Email:</b> " + txtEmail.Text + "<br>");
-            message.Append("<b>Telefone:</b> " + txtTelefone.Text + "<br>");
-            message.Append("<b>Cidade/UF:</b> " + txtCidade.Text + "<br>");
-            message.Append("<b>Endereço:</b> " + txtEndereco.Text + "<br>");
-            message.Append("<b>Descrição do Projeto:</b> " + txtMessage.Text + "<br>");
-            message.Append("========================================");
-
-            mail.Body = message.ToString();
-            mail.IsBodyHtml = true;
-            mail.Priority = MailPriority.Normal;
-
-            //Determina a codificação da mensagem no padrão brasileiro
-            mail.BodyEncoding = System.Text.Encoding.GetEncoding("ISO-8859-1");
-
-            //Determina a codificação do assunto da mensagem no padrão brasileito
-            mail.SubjectEncoding = System.Text.Encoding.GetEncoding("ISO-8859-1");
-
-            //Instancia o objeto de envio da mensagem
-            SmtpClient smtp = new SmtpClient();
-
-            //Determina o servidor de envio da mensagem
-            smtp.Host = "mail.lusole.com.br";
-
-            //Determina a porta do servidor SMTP
-            smtp.Port = Convert.ToInt16("587");
-
-            //Instancia o objeto que permite fazer autenticação no envio de e-mails via SMTP
-            smtp.Credentials = new System.Net.NetworkCredential("contato@lusole.com.br", "lusole123");
-
             try
             {
-                //Envia a mensagem
-                smtp.Send(mail);
-                LblMessage.Text = "Mensagem enviada com sucesso!";
-                txtNome.Text = string.Empty;
-                txtEmpresa.Text = string.Empty;
-                txtEmail.Text = string.Empty;
-                txtTelefone.Text = string.Empty;
-                txtCidade.Text = string.Empty;
-                txtEndereco.Text = string.Empty;
-                txtMessage.Text = string.Empty;
-                btnEnviar.Enabled = false;
+                int result = Convert.ToInt32(txtresult.Text);
+
+                if (result != (Convert.ToInt32(lblIni.Text) + Convert.ToInt32(lblFim.Text)))
+                {
+                    return;
+                }
+                else
+                {
+                    if (CheckBox1.Checked == true)
+                    {
+                        string resultado = DBNull.Value.ToString();
+
+                        //Define o conteúdo da mensagem
+                        StringBuilder message = new StringBuilder();
+
+
+                        message.Append("<b>Orçamento Site</b>" + "<br>");
+                        message.Append("========================================" + "<br>");
+                        message.Append("<b>Nome:</b> " + txtNome.Text + "<br>");
+                        message.Append("<b>Empresa:</b> " + txtEmpresa.Text + "<br>");
+                        message.Append("<b>Email:</b> " + txtEmail.Text + "<br>");
+                        message.Append("<b>Telefone:</b> " + txtTelefone.Text + "<br>");
+                        message.Append("<b>Cidade/UF:</b> " + txtCidade.Text + "<br>");
+                        message.Append("<b>Endereço:</b> " + txtEndereco.Text + "<br>");
+                        message.Append("<b>Descrição do Projeto:</b> " + txtMessage.Text + "<br>");
+                        message.Append("========================================" + "<br>");
+                        message.Append("<b>Consentimento:</b> " + lblConsentimento.Text + "<br>");
+                        message.Append("========================================");
+
+                        if (String.IsNullOrEmpty(txtvalidaCampo.Text))
+                        {
+                            resultado = EnviaEmail.EnviarEmail("contato@lusole.com.br", txtEmail.Text, "Orçamento", message.ToString());
+
+                            if (String.IsNullOrEmpty(resultado))
+                            {
+                                LblMessage.Text = "Mensagem enviada com sucesso!";
+                                txtNome.Text = string.Empty;
+                                txtEmpresa.Text = string.Empty;
+                                txtEmail.Text = string.Empty;
+                                txtTelefone.Text = string.Empty;
+                                txtCidade.Text = string.Empty;
+                                txtEndereco.Text = string.Empty;
+                                txtMessage.Text = string.Empty;
+                                txtresult.Text = string.Empty;
+                                CheckBox1.Checked = false;
+                                btnEnviar.Enabled = false;
+                            }
+
+                        }
+
+                    }
+                }
             }
             catch (Exception ex)
             {
+
                 LblMessage.Text = ex.Message;
             }
-            mail.Dispose();
         }
         else
         {
